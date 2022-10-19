@@ -33,7 +33,7 @@ jobs:
       - id: Build-Vue
         uses: xRealNeon/VuePagesAction@1.0.1
         with:
-          username: 'StruggleYang'
+          username: 'struy-cn'
           reponame: 'awesome-vue-components'
           token: ${{ secrets.GITHUB_TOKEN }}
           useyarn: true
