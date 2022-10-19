@@ -21,10 +21,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yran'
-    - run: yran
-    - run: yran build
+    - name: Vue to Github Pages with yarn
+      uses: hotrungnhan/VuePagesAction@1.0.1
