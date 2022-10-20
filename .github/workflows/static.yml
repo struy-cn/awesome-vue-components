@@ -31,5 +31,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Vue App to Github Pages
-        uses: StruggleYang/VuePagesAction@1.0.4
+        uses: StruggleYang/VuePagesAction@1.0.5
 
