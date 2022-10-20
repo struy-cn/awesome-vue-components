@@ -31,20 +31,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Vue App to Github Pages
-        uses: StruggleYang/VuePagesAction@1.0.2
+        uses: StruggleYang/VuePagesAction@1.0.3
         with:
           username: 'StruggleYang'
           orgname: 'struy-cn'
           reponame: 'awesome-vue-components'
           token: ${{ secrets.GITHUB_TOKEN }}
           useyarn: true
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: './dist'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
