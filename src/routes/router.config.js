@@ -35,13 +35,13 @@ const routes = [
         name: 'editor',
         component: RouterView,
         redirect: '/index/editor',
-        meta: { title: '编辑器', icon: 'fund-projection-screen-outlined' },
+        meta: { title: '编辑器', icon: 'laptop-outlined' },
         children: [
           {
             path: '/index/editor',
             name: 'index-editor',
             component: RouterView,
-            meta: { title: '代码编辑器', icon: 'bar-chart-outlined' }
+            meta: { title: '代码编辑器', icon: 'code-outlined' }
           }
         ]
       }
