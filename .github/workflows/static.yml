@@ -31,5 +31,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Vue App to Github Pages
-        uses: StruggleYang/VuePagesAction@1.0.5
+        uses: StruggleYang/VuePagesAction@2.0.0-beta.1
+        with:
+          cname: avc.struy.cn
+
 
