@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  base: '/awesome-vue-components/',
+  publicPath: '/awesome-vue-components/',
   assetsDir: 'static',
   transpileDependencies: true,
   devServer: {
