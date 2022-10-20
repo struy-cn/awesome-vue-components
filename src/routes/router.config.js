@@ -26,7 +26,7 @@ const routes = [
             path: '/index/table',
             name: 'index-table',
             component: RouterView,
-            meta: { title: '数据表格(导出)', icon: 'bar-chart-outlined' }
+            meta: { title: '数据表格', icon: 'table-outlined' }
           }
         ]
       },
