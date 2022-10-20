@@ -30,18 +30,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Build Vue
-        run: |
-              yarn install --frozen-lockfile
-              yarn build
-              ls
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: './dist'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      - name: Vue App to Github Pages
+        uses: StruggleYang/VuePagesAction@1.0.4
+
