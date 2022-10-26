@@ -26,4 +26,5 @@
 ![](preview/chart-close.png)
 
 - table
-![](preview/table-open.png)
+
+![](preview/table-open.jpeg)
