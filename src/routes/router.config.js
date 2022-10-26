@@ -25,7 +25,7 @@ const routes = [
           {
             path: '/index/table',
             name: 'index-table',
-            component: RouterView,
+            component: () => import('@/view/table/TableView'),
             meta: { title: '数据表格', icon: 'table-outlined' }
           }
         ]

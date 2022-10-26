@@ -27,7 +27,7 @@
         <template #title v-if="exportOpen">
           <a-tooltip>
             <template #title>
-              导出下方表格数据，详情页面导出所有数据，不必选择分页大小
+              导出下方表格数据
             </template>
             <a-button type="dashed" size="small" @click="exportExecl">导出</a-button>
           </a-tooltip>
@@ -170,8 +170,8 @@ export default defineComponent({
         return numCols
       }
     }
-    const change = (e) => {
-      ctx.emit('change', e)
+    const change = (pag, filters, sorter) => {
+      ctx.emit('change', pag, filters, sorter)
     }
 
     const handleSearch = (selectedKeys, confirm, dataIndex) => {

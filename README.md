@@ -1,24 +1,29 @@
 # awesome-vue-components
 
-## Project setup
-```
-yarn install
-```
+## about
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+- 🔥 a Vue3 project 
+- 🎉 a awesome vue components list 
+- 🙏 base on [ant-design-vue](https://www.antdv.com/)、[g2plot-vue](https://g2plot-vue.opd.cool/)、[codemirror](https://codemirror.net/) 
+- 💻 preview  [avc.struy.cn](avc.struy.cn)
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### List
 
-### Lints and fixes files
-```
-yarn lint
-```
+[x] 📈 common`s chart
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[x] 📃 common`s table
+
+[ ] 👨‍💻 common`s codeEditor
+
+... and more
+
+### Screenshot
+
+- chart
+
+![](preview/chart-open.png)
+
+![](preview/chart-close.png)
+
+- table
+![](preview/table-open.png)

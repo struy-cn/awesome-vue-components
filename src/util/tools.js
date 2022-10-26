@@ -20,6 +20,17 @@ export function isFullScreen () {
 }
 
 /**
+ * 
+ * a-select 下拉查询
+ * @param {当前输入} input 
+ * @param {当前选项} option 
+ * @returns 
+ */
+export function filterOption (input, option){
+  return option.value.toLowerCase().includes(input.toLowerCase()) || option.children()[0].children.toLowerCase().includes(input.toLowerCase())
+}
+
+/**
  * 去重
  * @returns
  */

@@ -6,7 +6,7 @@
       <div class="logo">
         <router-link style="color:rgba(255, 255, 255, 0.65);" to="/">
           <span v-if="!collapsed">
-            Awesome-vue
+            AVC
           </span>
           <span v-if="collapsed">
             V
@@ -62,6 +62,9 @@
         <span v-show="!showByIframe" style="margin-left: 15px;" title="将本页内容全屏">
           <fullscreen-outlined @click="fullscreen" class="trigger" v-if="!fullscreenOpen" />
         </span>
+        <span  style="margin-left: 15px;" >
+          <a href="https://github.com/struy-cn/awesome-vue-components">awesome-vue-components</a>, this`s good project
+        </span>
         <div class="header-index-right">
           <bug-outlined class="trigger" title="查看调试信息" @click="openDebug" />
           <a-divider type="vertical" />
@@ -79,9 +82,11 @@
         </div>
       </a-layout-content>
       <a-layout-footer :style="{ textAlign: 'center' }">
-        Copyright 2022～{{ new Date().getFullYear() }} <a href="http://struy.cn">struy</a>
+        Copyright 2022～{{ new Date().getFullYear() }}
         <a-divider type="vertical" />
-        <a href="https://github.com/StruggleYang"><github-outlined /></a>
+        <a href="http://struy.cn">struy</a>
+        <a-divider type="vertical" />
+        <a href="https://github.com/struy-cn/awesome-vue-components"><github-outlined /></a>
       </a-layout-footer>
     </a-layout>
   </a-layout>

@@ -112,7 +112,7 @@
 </template>
 <script>
 import { defineComponent, ref } from 'vue'
-import { isFullScreen } from '../../util/tools'
+import { isFullScreen,filterOption } from '../../util/tools'
 import { quickDates,quickMonths } from '../../util/date'
 import DateRange from '@/components/date/DateRange'
 import CommColumn from '@/components/charts/CommColumn.vue'
@@ -274,9 +274,6 @@ export default defineComponent({
       pageSize: 10
     })
     const dateRange = ref(quickDates.currMonth())
-    const filterOption = (input, option) => {
-      return option.value.toLowerCase().includes(input.toLowerCase()) || option.children()[0].children.toLowerCase().includes(input.toLowerCase())
-    }
     const onQueryFinish = (values) => {
       loading.value = true
       console.log('Received values of form: ', values)
