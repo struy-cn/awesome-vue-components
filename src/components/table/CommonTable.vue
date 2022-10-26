@@ -109,8 +109,7 @@ export default defineComponent({
     dataSource: { type: Array, default: () => [] },
     rowKey: { type: Function },
     scroll: { type: Object },
-    loading: { type: Boolean, default: false },
-    columnAnalys: { type: Boolean, default: false },
+    loading: { type: Boolean, default: false },  
     pagination: { type: Object, default: () => { return { showTotal: (total, range) => { return `记录 ${range[0]}-${range[1]}，总计 ${total} 条` }, showSizeChanger: true } } }
   },
   emits: ['change'],
