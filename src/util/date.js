@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
  */
 export const quickDates = {
   currMonth: () => [dayjs().startOf('month').format('YYYY-MM-DD'), dayjs().format('YYYY-MM-DD')],
+  currWeek: () => [dayjs().startOf('week').format('YYYY-MM-DD'), dayjs().endOf('week').format('YYYY-MM-DD')],
   lastWeek: () => [dayjs().subtract(1, 'week').startOf('week').format('YYYY-MM-DD'), dayjs().subtract(1, 'week').endOf('week').format('YYYY-MM-DD')],
   lastMonth: () => [dayjs().subtract(1, 'month').startOf('month').format('YYYY-MM-DD'), dayjs().subtract(1, 'month').endOf('month').format('YYYY-MM-DD')],
   lastHalfYear: () => [dayjs().subtract(6, 'month').startOf('month').format('YYYY-MM-DD'), dayjs().subtract(1, 'month').endOf('month').format('YYYY-MM-DD')]
@@ -34,13 +35,13 @@ export function someMonthLastMonth (dr) {
 /**
 * 某个月的下个月
 */
-export function someMonthNextMonth (dr) {
+export function someMonthNextMonth (dr, disabledAfterDate = true) {
   let res = quickDates.currMonth()
   if (typeof dr === 'object' & dr.length === 2) {
     const start = dr[0]
     const newStart = dayjs(start).add(1, 'month').startOf('month').format('YYYY-MM-DD')
     const newEed = dayjs(start).add(1, 'month').endOf('month').format('YYYY-MM-DD')
-    if (dayjs(newStart).format('YYYY') === dayjs().format('YYYY') && Number(dayjs(newStart).format('MM')) < Number(dayjs().format('MM'))) {
+    if (!disabledAfterDate || (dayjs(newStart).format('YYYY') === dayjs().format('YYYY') && Number(dayjs(newStart).format('MM')) < Number(dayjs().format('MM')))) {
       res = [newStart, newEed]
     }
   }
