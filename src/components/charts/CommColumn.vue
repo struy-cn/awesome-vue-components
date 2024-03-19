@@ -3,15 +3,20 @@
     <ResizeChart :hoverable="hoverable" :loading="loading" :title="title" :height="height">
       <template #extra>
         <slot name="extra"></slot>
-        <a v-if="columnConfig.isStack&&!columnConfig.isGroup"
+        <a v-if="columnConfig.isStack&&!columnConfig.isGroup" title="切换百分比显示"
           @click="switchPerCent">
           <percentage-outlined v-if="!columnConfig.isPercent" />
           <field-number-outlined v-else/>
+        </a>
+        <!-- 显示表格数据 -->
+        <a title="显示原始数据表" @click="switchShowTable">
+          <table-outlined />
         </a>
       </template>
       <template #chart>
         <column-chart v-if="dataSource&&dataSource.length > 0" v-bind="columnConfig" :data="dataSource" />
         <a-empty v-else />
+        <a-table v-if="dataSource&&dataSource.length > 0&&showTable" :dataSource="dataSource" :columns="tableColumns" :scroll="{ y: (height -40) }"></a-table>
       </template>
     </ResizeChart>
   </div>
@@ -41,6 +46,7 @@ export default defineComponent({
   },
   emits: ['dateChange'],
   setup (props) {
+    const showTable = ref(false)
     const columnConfig = ref({
       height: props.height,
       autoFit: true,
@@ -72,10 +78,22 @@ export default defineComponent({
         ]
       }
     })
+
+    const tableColumns = ref([
+      {
+        title: props.xField.meta ? props.xField.meta.alias : props.xField.name,
+        dataIndex: props.xField.name
+      },
+      {
+        title: props.yField.meta ? props.yField.meta.alias : props.yField.name,
+        dataIndex: props.yField.name
+      }
+    ])
     columnConfig.value.meta[props.xField.name] = ref(props.xField.meta).value
     columnConfig.value.meta[props.yField.name] = ref(props.yField.meta).value
     if (props.seriesField) {
       columnConfig.value.meta[props.seriesField.name] = ref(props.seriesField.meta).value
+      tableColumns.value.push({ title: props.seriesField.meta ? props.seriesField.meta.alias : props.seriesField.name, dataIndex: props.seriesField.name })
     }
     columnConfig.value.color = (type) => {
       if (typeof props.color === 'string') {
@@ -118,6 +136,10 @@ export default defineComponent({
     }
     if (props.focePercent) {
       switchPerCent()
+    }
+
+    const switchShowTable = () => {
+      showTable.value = !showTable.value
     }
 
     const targetValueChange = () => {
@@ -171,7 +193,10 @@ export default defineComponent({
     // 处理
     return {
       columnConfig,
-      switchPerCent
+      switchPerCent,
+      switchShowTable,
+      tableColumns,
+      showTable
     }
   }
 })

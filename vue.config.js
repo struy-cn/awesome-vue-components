@@ -4,7 +4,8 @@ module.exports = defineConfig({
   assetsDir: 'static',
   transpileDependencies: true,
   devServer: {
-    open: true
+    open: true,
+    port: 8088
   },
   css: {
     loaderOptions: {

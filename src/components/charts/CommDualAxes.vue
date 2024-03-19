@@ -1,6 +1,9 @@
 <template>
   <div>
     <ResizeChart :title="title" :hoverable="hoverable" :loading="loading" :height="height">
+      <template #extra>
+        <slot name="extra"></slot>
+      </template>
       <template #chart>
         <DualAxesChart v-bind="dualAxesConfig" :data="[dataSource,dataSource]" />
       </template>
@@ -28,6 +31,7 @@ export default defineComponent({
     columnColor: { type: [Object, String], require: false },
     columnSeriesField: { type: Object, require: false },
     columnIsGroup: { type: Boolean, default: false },
+    columnIsStack: { type: Boolean, default: false },
     dataSource: {
       type: [Array, Function],
       require: true,
@@ -68,6 +72,7 @@ export default defineComponent({
             }
           },
           isGroup: props.columnIsGroup,
+          isStack: props.columnIsStack,
           seriesField: props.columnSeriesField ? props.columnSeriesField.name : null,
           label: {
             // 可手动配置 label 数据标签位置

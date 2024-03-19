@@ -3,9 +3,14 @@
     <ResizeChart :title="title" :hoverable="hoverable" :loading="loading" :height="height">
       <template #extra>
         <slot name="extra"></slot>
+        <!-- 显示表格数据 -->
+        <a title="显示原始数据表" @click="switchShowTable">
+          <table-outlined />
+        </a>
       </template>
       <template #chart>
         <LineChart v-bind="lineConfig" :data="dataSource" />
+        <a-table v-if="dataSource&&dataSource.length > 0&&showTable" :dataSource="dataSource" :columns="tableColumns" :scroll="{ y: (height -40) }"></a-table>
       </template>
     </ResizeChart>
   </div>
@@ -40,6 +45,7 @@ export default defineComponent({
   },
   emits: ['dateChange'],
   setup (props) {
+    const showTable = ref(false)
     const lineConfig = ref({
       height: props.height,
       padding: 'auto',
@@ -59,10 +65,21 @@ export default defineComponent({
       label: {},
       point: {}
     })
+    const tableColumns = ref([
+      {
+        title: props.xField.meta ? props.xField.meta.alias : props.xField.name,
+        dataIndex: props.xField.name
+      },
+      {
+        title: props.yField.meta ? props.yField.meta.alias : props.yField.name,
+        dataIndex: props.yField.name
+      }
+    ])
     lineConfig.value.meta[props.xField.name] = ref(props.xField.meta).value
     lineConfig.value.meta[props.yField.name] = ref(props.yField.meta).value
     if (props.seriesField) {
       lineConfig.value.meta[props.seriesField.name] = ref(props.seriesField.meta).value
+      tableColumns.value.push({ title: props.seriesField.meta ? props.seriesField.meta.alias : props.seriesField.name, dataIndex: props.seriesField.name })
     }
     lineConfig.value.color = (type) => {
       for (const key in props.color) {
@@ -76,6 +93,9 @@ export default defineComponent({
           }
         }
       }
+    }
+    const switchShowTable = () => {
+      showTable.value = !showTable.value
     }
     const targetValueChange = () => {
       if (props.targetValue !== undefined && props.targetValue !== 0) {
@@ -124,7 +144,10 @@ export default defineComponent({
     })
     // 处理
     return {
-      lineConfig
+      lineConfig,
+      switchShowTable,
+      tableColumns,
+      showTable
     }
   }
 })
